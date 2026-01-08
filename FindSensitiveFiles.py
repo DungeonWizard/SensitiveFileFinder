@@ -62,6 +62,9 @@ def outputFile(root, file, extension):
                     re.compile(r"--bannerpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--bannerpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--bannerpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--configpassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--configpassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--configpassword \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--databasepassword "+passwordRegex).findall(line) + \
                     re.compile(r"--databasepassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--databasepassword \""+passwordRegex+"\"").findall(line) + \
@@ -74,9 +77,15 @@ def outputFile(root, file, extension):
                     re.compile(r"--dbpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--dbpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--dbpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--defaultpass "+passwordRegex).findall(line) + \
+                    re.compile(r"--defaultpass \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--defaultpass \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--defaultpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--defaultpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--defaultpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--diagpassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--diagpassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--diagpassword \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--githubpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--githubpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--githubpassword \""+passwordRegex+"\"").findall(line) + \
@@ -89,15 +98,27 @@ def outputFile(root, file, extension):
                     re.compile(r"--ldappassword "+passwordRegex).findall(line) + \
                     re.compile(r"--ldappassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--ldappassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--linuxpassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--linuxpassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--linuxpassword \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--mariadbpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--mariadbpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--mariadbpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--moodlepass "+passwordRegex).findall(line) + \
+                    re.compile(r"--moodlepass \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--moodlepass \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--moodlepassword "+passwordRegex).findall(line) + \
                     re.compile(r"--moodlepassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--moodlepassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--oraclepass "+passwordRegex).findall(line) + \
+                    re.compile(r"--oraclepass \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--oraclepass \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--oraclepassword "+passwordRegex).findall(line) + \
                     re.compile(r"--oraclepassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--oraclepassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--orapassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--orapassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--orapassword \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--pass "+passwordRegex).findall(line) + \
                     re.compile(r"--pass \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--pass \""+passwordRegex+"\"").findall(line) + \
@@ -107,15 +128,33 @@ def outputFile(root, file, extension):
                     re.compile(r"--password "+passwordRegex).findall(line) + \
                     re.compile(r"--password \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--password \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--printerpassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--printerpassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--printerpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--printpassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--printpassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--printpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--samlpass "+passwordRegex).findall(line) + \
+                    re.compile(r"--samlpass \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--samlpass \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--samlpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--samlpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--samlpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--secretpass "+passwordRegex).findall(line) + \
+                    re.compile(r"--secretpass \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--secretpass \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--secretpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--secretpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--secretpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--testpass "+passwordRegex).findall(line) + \
+                    re.compile(r"--testpass \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--testpass \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"--testpassword "+passwordRegex).findall(line) + \
                     re.compile(r"--testpassword \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"--testpassword \""+passwordRegex+"\"").findall(line) + \
+                    re.compile(r"--workpassword "+passwordRegex).findall(line) + \
+                    re.compile(r"--workpassword \'"+passwordRegex+"\'").findall(line) + \
+                    re.compile(r"--workpassword \""+passwordRegex+"\"").findall(line) + \
                     re.compile(r"pass = "+passwordRegex).findall(line) + \
                     re.compile(r"pass = \'"+passwordRegex+"\'").findall(line) + \
                     re.compile(r"pass = \""+passwordRegex+"\"").findall(line) + \
