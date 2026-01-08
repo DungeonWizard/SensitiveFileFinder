@@ -1,4 +1,5 @@
 import os
+import re
 
 class bcolors:
     HEADER = '\033[95m'
@@ -31,11 +32,19 @@ def outputFile(root, file, extension):
     print(f" 📄 {bcolors.RED}" + filePathFinal + f"{bcolors.ENDC}")
     # Check file contents for more specific findings.
     with open(filePath, "r", encoding="utf-8", errors="ignore") as f:
-        contents = f.read()
-        if "-----BEGIN CERTIFICATE-----" in contents:
-            findings.append(f"   ⚠️ {bcolors.FAIL}Certificate found: {bcolors.ENDC}{bcolors.RED}"+filePath+f"{bcolors.ENDC}")
-        if "-----BEGIN PRIVATE KEY-----" in contents or "-----BEGIN RSA PRIVATE KEY-----" in contents:
-            findings.append(f"   ⚠️ {bcolors.FAIL}Private key found: {bcolors.ENDC}{bcolors.RED}"+filePath+f"{bcolors.ENDC}")
+        lineCounter = 0
+        for line in f:
+            # Certificates
+            if "-----BEGIN CERTIFICATE-----" in line:
+                findings.append(f"   ⚠️ {bcolors.FAIL}Certificate found ["+str(lineCounter)+f"]: {bcolors.ENDC}{bcolors.RED}"+filePath+f"{bcolors.ENDC}")
+            # Private keys
+            if "-----BEGIN PRIVATE KEY-----" in line or "-----BEGIN RSA PRIVATE KEY-----" in line:
+                findings.append(f"   ⚠️ {bcolors.FAIL}Private key found ["+str(lineCounter)+f"]: {bcolors.ENDC}{bcolors.RED}"+filePath+f"{bcolors.ENDC}")
+            # GitHub Personal Access Tokens (PATs)
+            PATPattern = re.compile(r"\bgithub_pat_[A-Za-z0-9_]+\b")
+            for m in PATPattern.findall(line):
+                findings.append(f"   ⚠️ {bcolors.FAIL}GitHub PAT found ["+str(lineCounter)+f"]: {bcolors.ENDC}{bcolors.RED}"+filePath+f"{bcolors.ENDC} ({bcolors.WARNING}"+m+f"{bcolors.ENDC})")
+            lineCounter+=1
     return filePath
 
 def scan(folder_path):
@@ -163,7 +172,9 @@ sensitiveExtensions = [
     ".vault",
     ".wal",
     ".xcuserstate",
+    ".yaml",
     ".yarnrc",
+    ".yml",
 ]
 sensitiveFiles = [
     ".env.dev",
