@@ -1,3 +1,4 @@
+from alive_progress import alive_bar
 import os
 import re
 
@@ -26,6 +27,12 @@ class bcolors:
 os.system("color") # Comment out on Linux
 
 findings = []
+
+def count_files(folder_path):
+    total = 0
+    for _, _, files in os.walk(folder_path):
+        total += len(files)
+    return total
 
 def outputFile(root, file, extension):
     filePath = os.path.join(root, file)
@@ -223,14 +230,17 @@ def outputFile(root, file, extension):
 def scan(folder_path):
     numberScanned = 0
     foundFiles = []
-    for root, dirs, files in os.walk(folder_path):
-        for file in files:
-            numberScanned += 1
-            if file in sensitiveFiles:
-                foundFiles.append(outputFile(root, file, file.split(".")[-1]))
-            for extension in sensitiveExtensions:
-                if file.lower().endswith(extension) and file not in exceptions:
-                    foundFiles.append(outputFile(root, file, extension))
+    total_files = count_files(folder_path)
+    with alive_bar(total_files,title='Scanning',spinner='dots_waves2',enrich_print=False) as bar:
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                numberScanned += 1
+                if file in sensitiveFiles:
+                    foundFiles.append(outputFile(root, file, file.split(".")[-1]))
+                for extension in sensitiveExtensions:
+                    if file.lower().endswith(extension) and file not in exceptions:
+                        foundFiles.append(outputFile(root, file, extension))
+                bar()
 
     return (foundFiles, numberScanned)
 
