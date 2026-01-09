@@ -247,18 +247,21 @@ def scan(folder_path):
 
 # Comment out any that you don't care about.
 sensitiveExtensions = [
+    # a
     ".ansible",
     ".asc",
     ".auto.tfvars",
     ".aws",
     ".awscredentials",
     ".azure",
+    # b
     ".backup",
     ".bak",
     ".bash_history",
     ".boto",
     ".buildkite",
     ".bzr",
+    # c
     ".cache",
     ".cer",
     ".cert",
@@ -271,57 +274,71 @@ sensitiveExtensions = [
     ".credentials",
     ".crt",
     ".csr",
+    # d
     ".db",
     ".db3",
     ".der",
     ".dockercfg",
     ".dockerconfigjson",
     ".dockerignore",
+    # e
     ".entitlements",
     ".env",
+    # f
     ".ffs_db",
+    # g
     ".gcloud",
     ".git",
     ".github",
     ".gitlab-ci",
     ".gpg",
     ".gsutil",
-    ".heroku",
+    # h
     ".h",
+    ".heroku",
     ".hg",
     ".history",
     ".htaccess",
     ".htpasswd",
+    # i
     ".id_dsa",
     ".id_ecdsa",
     ".id_ed25519",
     ".id_rsa",
     ".ini",
     ".inventory",
+    # j
+    ".java",
     ".jenkins",
+    ".jks",
     ".js",
     ".json",
+    # k
     ".key",
     ".keychain",
     ".keys",
     ".keystore",
     ".kube",
-    ".jks",
     ".kubeconfig",
+    # l
     ".ldb",
     ".ldf",
     ".log",
+    # m
     ".md",
     ".mdf",
     ".mobileprovision",
     ".my.cnf",
+    # n
     ".netlify",
     ".netrc",
     ".nomad",
     ".npmrc",
+    # o
     ".old",
     ".orig",
     ".ovpn",
+    # p
     ".p12",
     ".passwd",
     ".pem",
@@ -334,7 +351,9 @@ sensitiveExtensions = [
     ".poetry",
     ".properties",
     ".pypirc",
+    # r
     ".realm",
+    # s
     ".s3cfg",
     ".save",
     ".seckey",
@@ -352,6 +371,7 @@ sensitiveExtensions = [
     ".svn",
     ".swap",
     ".swp",
+    # t
     ".teamcity",
     ".terraform",
     ".tfstate",
@@ -361,10 +381,14 @@ sensitiveExtensions = [
     ".toml",
     ".travis",
     ".txt",
+    # v
     ".vault",
+    # w
     ".wal",
+    # x
     ".xcuserstate",
     ".xml",
+    # y
     ".yaml",
     ".yarnrc",
     ".yml",
